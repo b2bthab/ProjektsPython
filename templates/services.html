@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Our services</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+NL:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playwrite+NL:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <header>
+    <nav class="topnav">
+      <a href="index.html">Homepage</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="Portfolio.html">Portfolio</a>
+      <a href="par_mums_2.html">Our Team</a>
+      <a href="kontakti.html">Contact us</a>
+    </nav>
+  </header>
+  <aside class="sidebar">
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="#list">Services</a>
+    <a href="#tabula">Prices</a>
+  </aside>
+  <main>
+     <h1>Our services</h1>
+    <section id="saturs">
+      <p>We are here for you</p>
+      <p>24/7 open</p>
+      <p>See more details below</p>
+    </section>
+    <section id="image">
+      <img src="me.jpg" class="rounded-circle" width="90%" alt="me">
+    </section>
+    <br>
+    <section id="links">
+      <p><a href="index.html"><b>Go to homepage</b></a>
+      </p>
+    </section>
+    <br>
+    <section id="Paragrafs">
+      <p class="cits">Here is a list of our services:</p>
+    </section>
+    <section id="list">
+      <ul>
+        <li>Accounting</li>
+        <li>Finance</li>
+      </ul>
+      <ol>
+        <li>Financial reporting</li>
+        <li>Budgeting</li>
+        <li>Hedge accounting</li>
+        <li>Team management</li>
+      </ol>
+      <ol type="I" start="V">
+        <li>Photograhy
+          <ul>
+            <li>In studio</li>
+            <li>On location</li>
+          </ul>
+        </li>
+        <li>Film-making</li>
+        <li>Digital design</li>
+        <li>Web page creation</li>
+      </ol>
+    </section>
+    <br>
+    <section id="Paragrafs">
+      <p class="cits">Here is our price list:</p>
+    </section>
+    <section id="tabula">
+      <table border="1">
+        <tr>
+          <td>11111</td>
+          <td>22222</td>
+          <td colspan="2">33333</td>
+        </tr>
+        <tr>
+          <td>44444</td>
+          <td>55555</td>
+          <td>66666</td>
+          <td>66666</td>
+        </tr>
+        <tr>
+          <td rowspan="2">11111</td>
+          <td>22222</td>
+          <td>33333</td>
+          <td>66666</td>
+        </tr>
+        <tr>
+          <td>55555</td>
+          <td>66666</td>
+          <td>66666</td>
+        </tr>
+      </table>
+    </section>
+    <br>
+    <section id="canva">
+      <canvas id="zimejums" width="500" height="400""></canvas>
+      <br>
+      <button onclick="zimetuzcanva2()">paradiotro!</button>
+      <button onclick="aplis()">paradit apli!</button>
+      <button onclick="linija()">paradit liniju!</button>
+      <button onclick="teksts()">paradit tekstu!</button>
+    </section>
+    <br>
+    <section id="saturs">
+        <label for="vards">Ievadi savu vardu</label>
+        <input type="text" id="vards" name="vards">
+        <label for="a">Ievadi A vertibu</label>
+        <input type="number" id="a">
+        <label for="b">Ievadi B vertibu</label>
+        <input type="number" id="b">
+        <button type="button" class="btn btn-danger" onclick="aprekins()"">Aprekinat</button>
+      <p id="rezultats">Seit bus rezultats</p>
+    </section>
+    <section id="video">
+      <iframe src="https://player.vimeo.com/video/49254523?h=035f0ec7df" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </section>
+    <section id="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17398.89872284592!2d24.163444650000002!3d56.968290499999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46eece4f87a96f9f%3A0xd4b908bee3cb6b97!2sDomina%20Shopping!5e0!3m2!1sru!2slv!4v1718536395178!5m2!1sru!2slv" width="500" height="380" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+    <br>
+    <section id="audio">
+      <audio controls>
+        <source src="StockTune.mp3" type="audio/mpeg">.
+      </audio>
+    </section>
+    <br>
+    <script src="script.js"></script>
+  </main>
+  <footer>&copy; LizBerg</footer>
+</body>
+
+</html>
