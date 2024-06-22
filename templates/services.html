@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Our services</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -23,11 +23,11 @@
 <body>
   <header>
     <nav class="topnav">
-      <a href="index.html">Homepage</a>
-      <a href="services.html" class="active">Services</a>
-      <a href="Portfolio.html">Portfolio</a>
-      <a href="par_mums_2.html">Our Team</a>
-      <a href="kontakti.html">Contact us</a>
+      <a href="/">Homepage</a>
+      <a href="/services" class="active">Services</a>
+      <a href="/Portfolio">Portfolio</a>
+      <a href="/par_mums_2">Our Team</a>
+      <a href="/kontakti">Contact us</a>
     </nav>
   </header>
   <aside class="sidebar">
@@ -143,7 +143,7 @@
       </audio>
     </section>
     <br>
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </main>
   <footer>&copy; LizBerg</footer>
 </body>

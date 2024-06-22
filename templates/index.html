@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>My Homepage</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -23,11 +23,11 @@
 <body>
   <header>
     <nav class="topnav">
-      <a href="index.html" class="active">Homepage</a>
-      <a href="services.html" onclick="atjaunotIetvaru(this); return false;">Services</a>
-      <a href="Portfolio.html" onclick="atjaunotIetvaru(this); return false;"">Portfolio</a>
-      <a href="par_mums_2.html" onclick="atjaunotIetvaru(this); return false;">Our Team</a>
-      <a href="kontakti.html" onclick="atjaunotIetvaru(this); return false;">Contact us</a>
+      <a href="/" class="active">Homepage</a>
+      <a href="/services" onclick="atjaunotIetvaru(this); return false;">Services</a>
+      <a href="/Portfolio" onclick="atjaunotIetvaru(this); return false;"">Portfolio</a>
+      <a href="/par_mums_2" onclick="atjaunotIetvaru(this); return false;">Our Team</a>
+      <a href="/kontakti" onclick="atjaunotIetvaru(this); return false;">Contact us</a>
     </nav>
   </header>
   <aside class="sidebar">
@@ -39,7 +39,7 @@
   <br>
   <p><a href="services.html">Services</a></p>
   <p><a href="kontakti.html">Contacts</a></p>
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
   </main>
   <footer>&copy; LizBerg</footer>
 </body>

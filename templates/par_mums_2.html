@@ -5,17 +5,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Our Team</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
   <header>
     <nav class="topnav">
-      <a href="index.html">Homepage</a>
-      <a href="services.html">Services</a>
-      <a href="Portfolio.html">Portfolio</a>
-      <a href="par_mums_2.html" class="active">Our Team</a>
-      <a href="kontakti.html">Contact us</a>
+      <a href="/">Homepage</a>
+      <a href="/services">Services</a>
+      <a href="/Portfolio">Portfolio</a>
+      <a href="/par_mums_2" class="active">Our Team</a>
+      <a href="/kontakti">Contact us</a>
     </nav>
   </header>
   <main>
@@ -36,7 +36,7 @@
            <p><a href="index.html"><b>Homepage</b></a>
            </p>
         </section>
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </main>
   <footer>&copy; LizBerg</footer>
 </body>
