@@ -1,0 +1,23 @@
+<doctype html>
+  <html lang="lv">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>Pamati sintakse</title>
+      <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text">
+    </head>  
+    <body>
+      <nav>
+        <ul>
+          <li><a href="/sveiciens">Sveiciens Pasaule</a></li>
+          <li><a href="/mainigie">Mainigie</a></li>
+          <li><a href="/datu_tipi">Datu tipi</a></li>
+          <li><a href="/operatori">Operatori</a></li>
+          <li><a href="/kontroles_strukturas">Kontroles strukturas</a></li>
+        </ul>
+      </nav>
+      <div>
+        {% block content %}{% endblock %}
+      </div>
+    </body>
+  </html>
