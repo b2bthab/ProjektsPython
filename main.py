@@ -94,6 +94,12 @@ def failu_apstrade():
         saturs = fails.read()
     return render_template('failu_apstrade.html', saturs=saturs)
 
+@app.route('/moduli')
+def moduli():
+    import math
+    sqrt_rezultats = math.sqrt(16)
+    return render_template('moduli.html', sqrt_rezultats=sqrt_rezultats)
+
 @app.route('/aiziet', methods=['POST'])
 def aiziet():
     lietotajs = request.form['lietotajvards']
