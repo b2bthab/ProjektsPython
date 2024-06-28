@@ -15,5 +15,8 @@
 </form>
           <script src="{{ url_for('static', filename='script.js') }}"></script>
       </main>
+    <div>
+      {% block content %}{% endblock %}
+    </div>
     </body>
-  </html>
+    </html>
