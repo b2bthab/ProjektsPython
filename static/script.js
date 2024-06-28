@@ -1,6 +1,7 @@
 function atjaunotIetvaru(which) {
   document.getElementById("lapas_saturs").innerHTML = '<'+'object id="lapas" type="text/html" data="'+which.href+'"></'+'object>';
 }
+
 window.onload = function() {
   zimetuzcanva();
     var navLinks = document.querySelectorAll('.topnav a');
@@ -13,18 +14,21 @@ window.onload = function() {
       });
     });
   }
+
 function zimetuzcanva() {
   var kanva = document.getElementById("zimejums");
   var ctx = kanva.getContext("2d");
   ctx.fillStyle = "green";
   ctx.fillRect(30, 30, 400, 350); 
 }
+
 function zimetuzcanva2() {
   var kanva = document.getElementById("zimejums");
   var ctx = kanva.getContext("2d");
   ctx.strokeStyle = "blue";
   ctx.strokeRect(0, 0, 300, 350); 
 }
+
 function aplis() {
   var kanva = document.getElementById("zimejums");
   var ctx = kanva.getContext("2d");

@@ -84,8 +84,8 @@ def kontroles_strukturas():
 def funkcijas():
     def sveiciens(vards="Janis"):
         return f"Sveiki! {vards}"
-    sveiciens = sveiciens()
-    return render_template('funkcijas.html', sveiciens=sveiciens)
+    sveiciens1 = sveiciens()
+    return render_template('funkcijas.html', sveiciens1=sveiciens1)
 
 @app.route('/failu_apstrade')
 def failu_apstrade():
@@ -106,10 +106,10 @@ def aiziet():
     return f"Paldies, {lietotajs}! Jūsu ziņa ir saņemta"
 
 @app.route('/aiziet2', methods=['POST'])
-def aiziet():
+def aiziet2():
     v_skaitlis_1 = request.form['v_skaitlis_1']
     v_skaitlis_2 = request.form['v_skaitlis_2']
-    reizinajums = v_skaitlis_1 * v_skaitlis_2
+    reizinajums = v_skaitlis_1 + v_skaitlis_2
     return f"Skaitlu rezinajuma rezultats ir: {reizinajums}"
 
 if __name__ == '__main__':

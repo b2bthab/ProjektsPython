@@ -105,12 +105,12 @@ button:hover {
 h1 {
   color: #ffffff;;
   font-size: 50px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 p {
   color: #f9d3e0;
   font-size: 20px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 #list {
   background-color: #cce8b5;
@@ -158,7 +158,7 @@ p {
   background-color: #9aa60e;
 }
 #links p {
-  font-family: "Playwrite NL", sans-serif; /* how to add diff font to links? */
+  font-family: "Oswald", sans-serif; /* how to add diff font to links? */
   font-size: 20px;
   color: #d58400;
 
@@ -170,7 +170,9 @@ p {
   width: 100%;
   height: 100%;
 }
+
 #lapas_saturs {
-  width: 100%;
-  width: 100%;
+  height: 100%;
+  width: calc(100% - 200px);
+  margin-top: 25px;
 }
