@@ -1,3 +1,6 @@
+function atjaunotIetvaru(which) {
+  document.getElementById("lapas_saturs").innerHTML = '<'+'object id="lapas" type="text/html" data="'+which.href+'"></'+'object>';
+}
 window.onload = function() {
   zimetuzcanva();
     var navLinks = document.querySelectorAll('.topnav a');
@@ -69,9 +72,6 @@ if (isNaN(num1) || isNaN(num2)) {
 let sum = num1 * num2;
 console.log("Tevi sauc " + vards + "Atbilde ir: " + sum);
 document.getElementById("rezultats").innerHTML = "<br>Tevi sauc " + vards + "<br>Atbilde ir: " + sum;
-}
-function atjaunotIetvaru(which) {
-document.getElementById("lapas_saturs").innerHTML = '<'+'object id="lapas" type="text/html" data="'+which.href+'"></'+'object>';
 }
 let age = 100;
 if (age < 18) {

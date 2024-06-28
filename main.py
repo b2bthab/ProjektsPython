@@ -105,5 +105,12 @@ def aiziet():
     lietotajs = request.form['lietotajvards']
     return f"Paldies, {lietotajs}! Jūsu ziņa ir saņemta"
 
+@app.route('/aiziet2', methods=['POST'])
+def aiziet():
+    v_skaitlis_1 = request.form['v_skaitlis_1']
+    v_skaitlis_2 = request.form['v_skaitlis_2']
+    reizinajums = v_skaitlis_1 * v_skaitlis_2
+    return f"Skaitlu rezinajuma rezultats ir: {reizinajums}"
+
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=5000)
