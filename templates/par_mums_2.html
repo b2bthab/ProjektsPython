@@ -11,16 +11,15 @@
   <main>
       <h1>Our team</h1>
       <p>Jelizaveta Burhanova</p>
-      <img src="me.jpg" width="90%" alt="me">
-      <br>
+    <img src="{{ url_for('static', filename='/media/me.jpg') }}" width="50%" alt="me">
       <p>Steven Bartlett</p>
-      <img src="Bartlett.webp" width="90%" alt="me">
+    <img src="{{ url_for('static', filename='/media/Bartlett.webp') }}" width="50%" alt="me">
       <br>
       <p>Elon Musk</p>
-      <img src="images.jpeg" width="90%" alt="me">
+    <img src="{{ url_for('static', filename='/media/images.jpeg') }}" width="50%" alt="me">
       <br>
       <p>Steve Jobs</p>
-      <img src="images-2.jpeg" width="90%" alt="me">
+    <img src="{{ url_for('static', filename='/media/images-2.jpeg') }}" width="50%" alt="me">
       <script src="script.js"></script>
         <section id="links">
            <p><a href="index.html"><b>Homepage</b></a>
