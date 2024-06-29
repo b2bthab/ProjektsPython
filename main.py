@@ -1,6 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = "manaatslega"
 
 @app.route('/')
 def index():
@@ -159,9 +162,75 @@ def aptauja():
 #   rezult = f"Tavs vards ir {vards} un dzimums ir {dzimums}"
 #   return render_template('aptauja.html', vards=vards, dzimums=dzimums')
 
-@app.route('/pieteikties')
+@app.route('/pieteikties', methods=['GET', 'POST'])
 def pieteikties():
+    if request.method == 'POST':
+        lietotajvards = request.form['lietotajvards']
+        parole = request.form['parole']
+        
+        conn = sqlite3.connect('datubaze.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM administratori WHERE lietotajvards = ?', (lietotajvards,))
+        admin = cursor.fetchone()
+        conn.close()
+        
+        if admin and check_password_hash(admin[2], parole):
+            session['lietotajvards'] = lietotajvards
+            return redirect(url_for('panelis'))
+        else:
+            flash('Nepareizs lietotajvards vai parole')
     return render_template('pieteikties.html')
+
+@app.route('/panelis')
+def panelis():
+    if 'lietotajvards' not in session:
+        return redirect(url_for('pieteikties'))
+    conn = sqlite3.connect('datubaze.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM lietotaji')
+    lietotaji = cursor.fetchall()
+    conn.close()
+    return render_template('panelis.html', lietotaji=lietotaji)
+
+@app.route('/iesniegt', methods=['POST'])
+def iesniegt():
+    vards = request.form['vards']
+    dzimums = request.form['dzimums']
+    hobiji = request.form.getlist('hobiji')
+    hobiji_str = ', '.join(hobiji)
+    conn = sqlite3.connect('datubaze.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO lietotaji (vards, dzimums, hobiji) VALUES (?, ?, ?)', (vards, dzimums, hobiji_str))
+    conn.commit()
+    conn.close()
+    return render_template('paldies.html')
+    
+def init_db():
+    conn = sqlite3.connect('datubaze.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS lietotaji (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            vards TEXT NOT NULL,
+            dzimums TEXT NOT NULL,
+            hobiji TEXT
+            )
+    ''')
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS administratori (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            lietotajvards TEXT NOT NULL,
+            parole TEXT NOT NULL
+            )
+    ''')
+
+    cursor.execute('SELECT * FROM administratori WHERE lietotajvards = ?', ('admin',))
+    if not cursor.fetchone():
+        cursor.execute('INSERT INTO administratori (lietotajvards, parole) VALUES (?, ?)',( 'admin', generate_password_hash('admin')))
+    conn.commit()
+    conn.close()
+
+init_db()
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=5000)
