@@ -192,6 +192,11 @@ def panelis():
     conn.close()
     return render_template('panelis.html', lietotaji=lietotaji)
 
+@app.route('/izlogoties')
+def izlogoties():
+    session.pop('lietotajvarsds', None)
+    return redirect(url_for('pieteikties'))
+
 @app.route('/iesniegt', methods=['POST'])
 def iesniegt():
     vards = request.form['vards']
