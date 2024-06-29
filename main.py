@@ -85,7 +85,10 @@ def funkcijas():
     def sveiciens(vards="Janis"):
         return f"Sveiki! {vards}"
     sveiciens1 = sveiciens()
-    return render_template('funkcijas.html', sveiciens1=sveiciens1)
+    sveiciens2 = sveiciens("Irina")
+    sveiciens3 = sveiciens1 + sveiciens2
+    return render_template('funkcijas.html', sveiciens1=sveiciens1, sveiciens2=sveiciens2,
+                          sveiciens3=sveiciens3)
 
 @app.route('/failu_apstrade')
 def failu_apstrade():
@@ -100,10 +103,27 @@ def moduli():
     sqrt_rezultats = math.sqrt(16)
     return render_template('moduli.html', sqrt_rezultats=sqrt_rezultats)
 
+@app.route('/oop')
+def oop():
+    class Persona:
+        def __init__(self, vards, vecums):
+            self.vards = vards
+            self.vecums = vecums
+        def sveiciens(self):
+            return f"Sveiki, mani sauc {self.vards} un man ir {self.vecums} gadi."
+    persona1 = Persona("Jānis", 25)
+    persona2 = Persona("Anna", 30)
+    sveiciens = persona1.sveiciens()
+    return render_template('oop.html', persona1=persona1, persona2=persona2, sveiciens=sveiciens)
+
 @app.route('/aiziet', methods=['POST'])
 def aiziet():
     lietotajs = request.form['lietotajvards']
     return f"Paldies, {lietotajs}! Jūsu ziņa ir saņemta"
+
+@app.route('/ievadi_divus')
+def ievadidivus():
+    return render_template('ievadi_divus.html')
 
 @app.route('/aiziet2', methods=['POST'])
 def aiziet2():
@@ -111,6 +131,37 @@ def aiziet2():
     v_skaitlis_2 = request.form['v_skaitlis_2']
     reizinajums = v_skaitlis_1 + v_skaitlis_2
     return f"Skaitlu rezinajuma rezultats ir: {reizinajums}"
+
+@app.route('/majasdarbs')
+def majasdarbs():
+    return render_template('majasdarbs.html')
+
+@app.route('/majasdarbs2', methods=['POST'])
+def majasdarbs2():
+    a = int(request.form['a'])
+    b = int(request.form['b'])
+    if a == b:
+        rez = "Abi skaitli ir vienadi"
+    elif a > b:
+        rez = f"Pirmais skaitlis is lielaks: {a}"
+    else:
+        rez = f"Otrais skaitlis is lielaks: {b}"
+    return render_template('majasdarbs.html', rez=rez)
+
+@app.route('/aptauja')
+def aptauja():
+    return render_template('aptauja.html')
+
+#@app.route('/iesniegt', methods=['POST'])
+#def iesniegt():
+#    vards = request.form['vards']
+#   dzimums = request.form['dzimums']
+#   rezult = f"Tavs vards ir {vards} un dzimums ir {dzimums}"
+#   return render_template('aptauja.html', vards=vards, dzimums=dzimums')
+
+@app.route('/pieteikties')
+def pieteikties():
+    return render_template('pieteikties.html')
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=5000)

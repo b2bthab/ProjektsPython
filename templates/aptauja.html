@@ -1,0 +1,28 @@
+{% extends "pamati_sintakse.html" %}
+
+{% block content %}
+<a href="/pieteikties">Pieteikties sistemai</a>
+<h1>Aptaujas aizpildisana</h1>
+<form action="/iesniegt" method="post">
+  <labe l for="vards">Vards</label>
+  <input type="text" id="vards" name="vards" required><br><br>
+  <label for="dzimums">Dzimums</label>
+  <input type="radio" id="virietis" name="dzimums" value="virietis" required>
+  <label for="virietis">Virietis</label>
+  <input type="radio" id="sieviete" name="dzimums" value="sieviete" required>
+  <label for="sieviete">Sieviete</label><br><br>
+  <label>Hobiji</label><br>
+  <input type="checkbox" id="hobijs1" name="hobijs1" value="Lasisana">
+  <label for="hobijs1">Lasisana</label><br>
+  <input type="checkbox" id="hobijs2" name="hobijs2" value="Celosana">
+  <label for="hobijs2">Celosana</label><br>
+  <input type="checkbox" id="hobijs3" name="hobijs3" value="Muzika">
+  <label for="hobijs2">Muzika</label><br>
+  <input type="checkbox" id="hobijs4" name="hobijs4" value="Ediens">
+  <label for="hobijs2">Edienu gatavosana</label><br>
+  <input type="checkbox" id="hobijs5" name="hobijs5" value="Sports">
+  <label for="hobijs2">Sports</label><br>
+  <input type="submit" value="Iesniegt">
+</form>
+{{ rezult }}
+{% endblock %}
