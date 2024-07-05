@@ -3,7 +3,7 @@ function atjaunotIetvaru(which) {
 }
 
 window.onload = function() {
-  zimetuzcanva();
+
     var navLinks = document.querySelectorAll('.topnav a');
     navLinks.forEach(function(link) {
       link.addEventListener('click', function() {

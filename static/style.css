@@ -4,7 +4,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #7b219f; /* fona krasa */
+  background-color: #94e3fe; /* fona krasa */
   font-family: "Oswald", sans-serif;
 }
 
@@ -64,7 +64,7 @@ body {
 main {
   margin-left: 200px;
   padding: 0px;
-  background-color: #7b219f;
+  background-color: #94e3fe;
 }
 
 footer {
@@ -103,12 +103,12 @@ button:hover {
   color: black;
 }
 h1 {
-  color: #ffffff;;
+  color: #7b219f;;
   font-size: 50px;
   font-family: "Oswald", sans-serif;
 }
 p {
-  color: #f9d3e0;
+  color: #0042aa;
   font-size: 20px;
   font-family: "Oswald", sans-serif;
 }
@@ -120,24 +120,26 @@ p {
   font-size: 20px;
 }
 #Paragrafs {
-  background-color: #606060;
+  background-color: #7a7a7a;
   padding: 20px
   margin: 8px;
   border-radius: 10px;
   font-size: 10px;
 }
-#tabula{
+#tabula {
   background-color: #cce8b5;
   padding: 10px
 }
 #saturs p {
-  color: #f5ec00;
+  color: #0042aa;
   font-size: 20px;
 }
 #image img {
   display: block;
   border-radius: 8px;
+  text-align: left;
   margin: 0 auto;
+  align-items: left;
 }
 #tabula table {
   border-collapse: collapse;
@@ -155,6 +157,24 @@ p {
   background-color: #f2f2f2;
 }
 #tabula tr:nth-child(1)  {
+  background-color: #9aa60e;
+
+#tabula_panelis table {
+  border-collapse: collapse;
+  background-color: #ddffff;
+  width: 90%;
+  margin: 20px;
+  border-color: #0061ff; 
+}
+#tabula_panelis td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+#tabula_panelis tr:nth-child(even)  {
+  background-color: #f2f2f2;
+}
+#tabula_panelis tr:nth-child(1)  {
   background-color: #9aa60e;
 }
 #links p {
@@ -175,4 +195,8 @@ p {
   height: 100%;
   width: calc(100% - 200px);
   margin-top: 25px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }

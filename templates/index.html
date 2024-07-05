@@ -19,7 +19,6 @@
       <a href="/par_mums_2" onclick="atjaunotIetvaru(this); return false;">Our Team</a>
       <a href="/kontakti" onclick="atjaunotIetvaru(this); return false;">Contact us</a>
       <a href="/pamati_sintakse" onclick="atjaunotIetvaru(this); return false;">Syntax</a>
-      <a href="/ievadi_divus" onclick="atjaunotIetvaru(this); return false;">Enter two..</a>
     </nav>
   </header>
   <aside class="sidebar">
@@ -29,8 +28,9 @@
   <p>I offer a wide range of services!</p>
   <img src="{{ url_for('static', filename='/media/me.jpg') }}" class="rounded-circle" width="20%" alt="me">
   <br>
-  <p><a href="services.html">Services</a></p>
-  <p><a href="kontakti.html">Contacts</a></p>
+  <p><a href="/services" onclick="atjaunotIetvaru(this); return false;">Services</a></p>
+  <p><a href="/kontakti" onclick="atjaunotIetvaru(this); return false;">Contact us</a></p>
+    
   <script src="{{ url_for('static', filename='script.js') }}"></script>
   </main>
   <footer>&copy; LizBerg</footer>
