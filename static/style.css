@@ -158,24 +158,6 @@ p {
 }
 #tabula tr:nth-child(1)  {
   background-color: #9aa60e;
-
-#tabula_panelis table {
-  border-collapse: collapse;
-  background-color: #ddffff;
-  width: 90%;
-  margin: 20px;
-  border-color: #0061ff; 
-}
-#tabula_panelis td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: center;
-}
-#tabula_panelis tr:nth-child(even)  {
-  background-color: #f2f2f2;
-}
-#tabula_panelis tr:nth-child(1)  {
-  background-color: #9aa60e;
 }
 #links p {
   font-family: "Oswald", sans-serif; /* how to add diff font to links? */
