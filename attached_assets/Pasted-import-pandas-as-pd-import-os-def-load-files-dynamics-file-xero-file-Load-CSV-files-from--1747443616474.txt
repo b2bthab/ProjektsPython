@@ -1,0 +1,120 @@
+import pandas as pd
+import os
+
+def load_files(dynamics_file, xero_file):
+    """Load CSV files from Dynamics 365 and Xero."""
+    try:
+        dynamics_df = pd.read_csv(dynamics_file)
+        xero_df = pd.read_csv(xero_file)
+        print(f"Loaded Dynamics 365 file: {dynamics_file}")
+        print(f"Loaded Xero file: {xero_file}")
+        return dynamics_df, xero_df
+    except FileNotFoundError as e:
+        print(f"Error: File not found - {e}")
+        return None, None
+    except Exception as e:
+        print(f"Error loading files: {e}")
+        return None, None
+
+def compare_financial_data(dynamics_df, xero_df):
+    """Compare financial data between Dynamics 365 and Xero."""
+    discrepancies = []
+    
+    # Ensure required columns exist
+    dynamics_required = ['InvoiceID', 'Amount', 'Date']
+    xero_required = ['TransactionID', 'Amount', 'Date']
+    
+    if not all(col in dynamics_df.columns for col in dynamics_required):
+        print("Error: Dynamics 365 file missing required columns")
+        return discrepancies
+    if not all(col in xero_df.columns for col in xero_required):
+        print("Error: Xero file missing required columns")
+        return discrepancies
+
+    # Convert Date columns to datetime for consistent comparison
+    dynamics_df['Date'] = pd.to_datetime(dynamics_df['Date'], errors='coerce')
+    xero_df['Date'] = pd.to_datetime(xero_df['Date'], errors='coerce')
+
+    # Compare records (assuming InvoiceID matches TransactionID for simplicity)
+    for idx, dynamics_row in dynamics_df.iterrows():
+        invoice_id = dynamics_row['InvoiceID']
+        dynamics_amount = dynamics_row['Amount']
+        dynamics_date = dynamics_row['Date']
+        
+        # Find matching transaction in Xero
+        xero_match = xero_df[xero_df['TransactionID'] == invoice_id]
+        
+        if xero_match.empty:
+            discrepancies.append({
+                'InvoiceID/TransactionID': invoice_id,
+                'Issue': 'No matching transaction in Xero',
+                'Dynamics_Amount': dynamics_amount,
+                'Xero_Amount': None,
+                'Dynamics_Date': dynamics_date,
+                'Xero_Date': None
+            })
+        else:
+            xero_amount = xero_match.iloc[0]['Amount']
+            xero_date = xero_match.iloc[0]['Date']
+            
+            # Compare amounts
+            if abs(float(dynamics_amount) - float(xero_amount)) > 0.01:  # Allow small float differences
+                discrepancies.append({
+                    'InvoiceID/TransactionID': invoice_id,
+                    'Issue': 'Amount mismatch',
+                    'Dynamics_Amount': dynamics_amount,
+                    'Xero_Amount': xero_amount,
+                    'Dynamics_Date': dynamics_date,
+                    'Xero_Date': xero_date
+                })
+            
+            # Compare dates
+            if pd.isna(dynamics_date) or pd.isna(xero_date) or dynamics_date.date() != xero_date.date():
+                discrepancies.append({
+                    'InvoiceID/TransactionID': invoice_id,
+                    'Issue': 'Date mismatch',
+                    'Dynamics_Amount': dynamics_amount,
+                    'Xero_Amount': xero_amount,
+                    'Dynamics_Date': dynamics_date,
+                    'Xero_Date': xero_date
+                })
+    
+    return discrepancies
+
+def save_discrepancies(discrepancies, output_file):
+    """Save discrepancies to a CSV file."""
+    if discrepancies:
+        discrepancies_df = pd.DataFrame(discrepancies)
+        discrepancies_df.to_csv(output_file, index=False)
+        print(f"Discrepancies saved to {output_file}")
+    else:
+        print("No discrepancies found.")
+
+def main():
+    # File paths (adjust these to match your file names in Replit)
+    dynamics_file = "dynamics_invoices.csv"
+    xero_file = "xero_transactions.csv"
+    output_file = "discrepancies_report.csv"
+    
+    # Load files
+    dynamics_df, xero_df = load_files(dynamics_file, xero_file)
+    
+    if dynamics_df is None or xero_df is None:
+        return
+    
+    # Compare data
+    discrepancies = compare_financial_data(dynamics_df, xero_df)
+    
+    # Output results
+    if discrepancies:
+        print("\nDiscrepancies found:")
+        for discrepancy in discrepancies:
+            print(discrepancy)
+    else:
+        print("\nNo discrepancies found.")
+    
+    # Save discrepancies to file
+    save_discrepancies(discrepancies, output_file)
+
+if __name__ == "__main__":
+    main()
