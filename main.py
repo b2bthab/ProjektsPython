@@ -197,6 +197,50 @@ def izlogoties():
     session.pop('lietotajvarsds', None)
     return redirect(url_for('pieteikties'))
 
+@app.route('/financial_comparison')
+def financial_comparison():
+    return render_template('financial_comparison.html')
+
+@app.route('/compare_financial', methods=['POST'])
+def compare_financial():
+    import pandas as pd
+    import os
+    from io import StringIO
+    
+    try:
+        dynamics_file = request.files['dynamics_file']
+        xero_file = request.files['xero_file']
+        
+        # Read CSV files
+        dynamics_df = pd.read_csv(dynamics_file)
+        xero_df = pd.read_csv(xero_file)
+        
+        # Compare data using the imported functions
+        discrepancies = compare_financial_data(dynamics_df, xero_df)
+        
+        if discrepancies:
+            # Save discrepancies to a temporary file
+            discrepancies_df = pd.DataFrame(discrepancies)
+            discrepancies_df.to_csv('discrepancies_report.csv', index=False)
+            return render_template('financial_comparison.html', 
+                                discrepancies=str(discrepancies))
+        else:
+            return render_template('financial_comparison.html', 
+                                discrepancies="No discrepancies found.")
+            
+    except Exception as e:
+        return render_template('financial_comparison.html', 
+                             error=f"Error processing files: {str(e)}")
+
+@app.route('/download_report')
+def download_report():
+    if os.path.exists('discrepancies_report.csv'):
+        return send_file('discrepancies_report.csv',
+                        mimetype='text/csv',
+                        as_attachment=True,
+                        download_name='discrepancies_report.csv')
+    return "No report available"
+
 @app.route('/iesniegt', methods=['POST'])
 def iesniegt():
     vards = request.form['vards']

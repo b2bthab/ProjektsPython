@@ -1,0 +1,27 @@
+
+{% extends "pamati_sintakse.html" %}
+
+{% block content %}
+<h1>Financial Data Comparison</h1>
+<form action="/compare_financial" method="POST" enctype="multipart/form-data">
+    <div>
+        <label for="dynamics_file">Dynamics 365 CSV File:</label>
+        <input type="file" name="dynamics_file" accept=".csv" required>
+    </div>
+    <div>
+        <label for="xero_file">Xero CSV File:</label>
+        <input type="file" name="xero_file" accept=".csv" required>
+    </div>
+    <button type="submit">Compare Files</button>
+</form>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+{% if discrepancies %}
+    <h2>Discrepancies Found:</h2>
+    <pre>{{ discrepancies }}</pre>
+    <a href="/download_report">Download Full Report</a>
+{% endif %}
+{% endblock %}
